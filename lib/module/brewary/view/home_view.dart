@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:stack_overflow/_util/app_constant.dart';
 import 'package:stack_overflow/_util/extensions.dart';
 import 'package:stack_overflow/module/brewary/view/brewary_view.dart';
 import 'package:stack_overflow/module/brewary/view/orient_view.dart';
+import 'package:stack_overflow/module/home/view/home_view.dart';
+import 'package:stack_overflow/module/home/view/method_channel.dart';
+import 'package:stack_overflow/module/video_player/view/video_player.dart';
 
 class MyHome extends StatelessWidget {
   const MyHome({super.key});
@@ -38,6 +42,39 @@ class MyHome extends StatelessWidget {
                 );
               },
               child: const Text("Orient View"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CustomVideoPlayer(),
+                  ),
+                );
+              },
+              child: const Text("Video Player"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Home(),
+                  ),
+                );
+              },
+              child: const Text("Home"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MethodChannelUI(),
+                  ),
+                );
+              },
+              child: const Text("Method Channel"),
             )
           ],
         ),
