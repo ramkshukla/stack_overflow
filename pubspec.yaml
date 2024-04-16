@@ -20,6 +20,7 @@ dependencies:
   connectivity_plus: ^6.0.2
   better_player: ^0.0.83
   just_audio: ^0.9.37
+  audio_session: ^0.1.19
   scrollable_list_tab_scroller: ^0.2.0
   azlistview: 
     git: 

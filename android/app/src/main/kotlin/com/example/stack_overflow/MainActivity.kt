@@ -51,29 +51,33 @@ class MainActivity: FlutterActivity(){
         }
 
     }
-    private fun getAllRingTones(context: Context): List<Map<String, String>>{
+    private fun getAllRingTones(context: Context): MutableList<String?> {
         val manager = RingtoneManager(context);
         manager.setType(RingtoneManager.TYPE_RINGTONE);
         val  cursor: Cursor = manager.cursor;
-        val list : MutableList<String> = mutableListOf();
+//        val nameList : MutableList<String?> = mutableListOf();
+        val uriList : MutableList<String?> = mutableListOf();
+//        val combinedList: MutableList<Pair<String, List<String?>>>  = mutableListOf();
         while (cursor.moveToNext()){
             val context = getActivity().applicationContext
+//            val ringtone: String? = cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX);
             val defaultRingtoneUri: Uri? = RingtoneManager.getActualDefaultRingtoneUri(context, RingtoneManager.TYPE_RINGTONE)
-
+//            nameList.add(ringtone);
             if (defaultRingtoneUri != null) {
-                list.add(defaultRingtoneUri.toString())
                 val path: String? = defaultRingtoneUri.path
                 if (path != null) {
-                    list.add(path)
+                    uriList.add(path)
                 } else {
-                    list.add("No path available")
+                    uriList.add("No path available")
                 }
             } else {
-                list.add("No default ringtone")
+                uriList.add("No default ringtone")
             }
         }
+//        combinedList.add(Pair("name", nameList));
+//        combinedList.add(Pair("uri", uriList));
         cursor.close()
-        return  list;
+        return  uriList;
     }
 
      private fun getBatteryLevel(): Int {

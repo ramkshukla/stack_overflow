@@ -17,9 +17,10 @@ class MethodChannelUI extends StatefulWidget {
 }
 
 class _MethodChannelState extends State<MethodChannelUI> {
+  bool isLoading = false;
   String? methodChannel;
   int? batteryLevel;
-  List? ringtones;
+  late List<Object?> ringtones = [];
   AudioPlayer audioPlayer = AudioPlayer();
 
   static const methodChannelName = MethodChannel("username");
@@ -55,9 +56,9 @@ class _MethodChannelState extends State<MethodChannelUI> {
     return batteryLevel!;
   }
 
-  Future<List> getRingTones() async {
+  Future<List<Object?>> getRingTones() async {
     try {
-      List ringTones =
+      List<Object?> ringTones =
           await getRingTonesMethodChannel.invokeMethod("getRingTones");
       print("RingTones: $ringTones");
       setState(() {
@@ -66,12 +67,12 @@ class _MethodChannelState extends State<MethodChannelUI> {
     } on PlatformException catch (e) {
       print("Error: ${e.message}");
     }
-    return ringtones!;
+    return ringtones;
   }
 
-  void playRingTones(String? ringtone) {
+  void playRingTones(Object? ringtone) {
     audioPlayer.setAudioSource(
-      AudioSource.uri(Uri.tryParse(ringtone!)!),
+      AudioSource.uri(Uri.tryParse(ringtone!.toString())!),
     );
     audioPlayer.play();
   }
@@ -79,50 +80,56 @@ class _MethodChannelState extends State<MethodChannelUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Method Channel")),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("User Name: $methodChannel!"),
-          Text("Battery Level: $batteryLevel"),
-          if ((ringtones ?? []).isNotEmpty)
-            Expanded(
-              child: ListView.builder(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                itemCount: ringtones!.length,
-                itemBuilder: (context, index) {
-                  final ringtone = ringtones![index];
-
-                  return Card(
-                    child: ListTile(
-                      onTap: () {
-                        setState(() {
-                          playRingTones(ringtone);
-                        });
-                      },
-                      title: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text("ringtone_${index + 1}"),
-                          Icon(Icons.play_arrow)
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ElevatedButton(
-            onPressed: initUserNameMethodChannel,
-            child: Text("Initiate Method channel"),
-          ),
-          ElevatedButton(
-            onPressed: initGetBatteryLevel,
-            child: Text("Fetch Battery Level"),
-          ),
-          ElevatedButton(onPressed: getRingTones, child: Text("Get RongTones"))
-        ],
+      appBar: AppBar(
+        title: Text("Method Channel"),
+        centerTitle: true,
       ),
+      body: isLoading
+          ? CircularProgressIndicator()
+          : Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("User Name: $methodChannel!"),
+                Text("Battery Level: $batteryLevel"),
+                if ((ringtones).isNotEmpty)
+                  Expanded(
+                    child: ListView.builder(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      itemCount: (ringtones).length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          child: ListTile(
+                            onTap: () {
+                              setState(() {
+                                playRingTones(ringtones[index]);
+                              });
+                            },
+                            title: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("ringtone_${index + 1}"),
+                                Icon(Icons.play_arrow)
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ElevatedButton(
+                  onPressed: initUserNameMethodChannel,
+                  child: Text("Initiate Method channel"),
+                ),
+                ElevatedButton(
+                  onPressed: initGetBatteryLevel,
+                  child: Text("Fetch Battery Level"),
+                ),
+                ElevatedButton(
+                  onPressed: getRingTones,
+                  child: Text("Get RongTones"),
+                )
+              ],
+            ),
     );
   }
 }
