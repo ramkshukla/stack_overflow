@@ -89,7 +89,7 @@ class _MethodChannelState extends State<MethodChannelUI> {
           : Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("User Name: $methodChannel!"),
+                Text("User Name: $methodChannel"),
                 Text("Battery Level: $batteryLevel"),
                 if ((ringtones).isNotEmpty)
                   Expanded(
