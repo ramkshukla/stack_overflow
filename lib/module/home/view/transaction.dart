@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:scrollable_list_tab_scroller/scrollable_list_tab_scroller.dart';
 
 final data = {
   "Category A": [

@@ -27,12 +27,12 @@ import Flutter
       batteryLevelChannel.setMethodCallHandler({
         [weak self] (call: FlutterMethodCall, result: FlutterResult) -> Void in
 
-        guard call.method == "batteryLevel" else{
+        guard call.method == "getBatteryLevel" else{
           result(FlutterMethodNotImplemented)
           return
         }
 
-        self?.batteryLevel(result: result)
+        self?.getBatteryLevel(result: result)
       })  
           
       GeneratedPluginRegistrant.register(with: self)
@@ -44,7 +44,7 @@ import Flutter
     }
 
 
-    private func batteryLevel(result: FlutterResult){
+    private func getBatteryLevel(result: FlutterResult){
         let device = UIDevice.current
         device.isBatteryMonitoringEnabled = true
 
