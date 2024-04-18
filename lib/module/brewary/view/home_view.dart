@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:stack_overflow/_util/app_constant.dart';
 import 'package:stack_overflow/_util/extensions.dart';
+import 'package:stack_overflow/main_uat.dart';
 import 'package:stack_overflow/module/brewary/view/brewary_view.dart';
 import 'package:stack_overflow/module/brewary/view/orient_view.dart';
 import 'package:stack_overflow/module/home/view/home_view.dart';
 import 'package:stack_overflow/module/home/view/method_channel.dart';
+import 'package:stack_overflow/module/phone_auth/view/phone_auth_view.dart';
 import 'package:stack_overflow/module/video_player/view/video_player.dart';
 
 class MyHome extends StatelessWidget {
@@ -42,6 +44,7 @@ class MyHome extends StatelessWidget {
               },
               child: const Text("Orient View"),
             ),
+            const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -53,6 +56,7 @@ class MyHome extends StatelessWidget {
               },
               child: const Text("Video Player"),
             ),
+            const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -64,6 +68,7 @@ class MyHome extends StatelessWidget {
               },
               child: const Text("Home"),
             ),
+            const SizedBox(height: 8),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -74,6 +79,18 @@ class MyHome extends StatelessWidget {
                 );
               },
               child: const Text("Method Channel"),
+            ),
+            const SizedBox(height: 8),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PhoneAuthView(),
+                  ),
+                );
+              },
+              child: Text("Login"),
             )
           ],
         ),

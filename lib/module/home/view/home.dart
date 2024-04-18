@@ -1,14 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:stack_overflow/_util/common_function.dart';
+import 'package:stack_overflow/main_uat.dart';
 import 'package:stack_overflow/module/home/controller/home_controller.dart';
 import 'package:stack_overflow/module/home/controller/home_event.dart';
 import 'package:stack_overflow/module/home/controller/home_state.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({
-    super.key,
-  });
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> with RouteAware {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      routeObserver.subscribe(this, ModalRoute.of(context)!);
+    });
+    super.initState();
+  }
+
+  @override
+  void didPush() {
+    print("Home Screen Push called>>>>>");
+    super.didPush();
+  }
+
+  @override
+  void didPop() {
+    print("Home Screen pop called>>>>>");
+    super.didPop();
+  }
+
+  @override
+  void didPopNext() {
+    print("Home Screen pop Next called>>>>>");
+    super.didPopNext();
+  }
+
+  @override
+  void didPushNext() {
+    print('Page1: Called didPushNext');
+    super.didPushNext();
+  }
 
   @override
   Widget build(BuildContext context) {
