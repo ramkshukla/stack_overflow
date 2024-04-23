@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:stack_overflow/_util/app_constant.dart';
-import 'package:stack_overflow/_util/extensions.dart';
-import 'package:stack_overflow/main_uat.dart';
+import 'package:stack_overflow/_util/env_config.dart';
 import 'package:stack_overflow/module/brewary/view/brewary_view.dart';
 import 'package:stack_overflow/module/brewary/view/orient_view.dart';
 import 'package:stack_overflow/module/home/view/home_view.dart';
 import 'package:stack_overflow/module/home/view/method_channel.dart';
 import 'package:stack_overflow/module/phone_auth/view/phone_auth_view.dart';
+import 'package:stack_overflow/module/todo/view/todo_view.dart';
 import 'package:stack_overflow/module/video_player/view/video_player.dart';
 
 class MyHome extends StatelessWidget {
@@ -14,12 +13,15 @@ class MyHome extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    "Base Url: $baseUrl".logIt;
     return Scaffold(
-      appBar: AppBar(title: const Text("Home"), centerTitle: true),
+      appBar: AppBar(
+          title: Text(
+            "${uat.appTitle}",
+            style: TextStyle(fontSize: 16),
+          ),
+          centerTitle: true),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
               onPressed: () {
@@ -91,7 +93,15 @@ class MyHome extends StatelessWidget {
                 );
               },
               child: Text("Login"),
-            )
+            ),
+            ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Todo()),
+                  );
+                },
+                child: Text("Firestore Tutorial"))
           ],
         ),
       ),

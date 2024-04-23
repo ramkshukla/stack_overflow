@@ -1,13 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:otp_text_field/otp_text_field.dart';
-import 'package:stack_overflow/module/home/view/home.dart';
-import 'package:stack_overflow/module/home/view/home_view.dart';
 import 'package:stack_overflow/module/phone_auth/controller/phone_auth_bloc.dart';
 import 'package:stack_overflow/module/phone_auth/controller/phone_auth_event.dart';
 import 'package:stack_overflow/module/phone_auth/controller/phone_auth_state.dart';
-import 'package:stack_overflow/module/phone_auth/view/otp_verify_view.dart';
 
 class PhoneAuthView extends StatefulWidget {
   const PhoneAuthView({super.key});

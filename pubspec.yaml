@@ -22,6 +22,7 @@ dependencies:
   just_audio: ^0.9.37
   audio_session: ^0.1.19
   scrollable_list_tab_scroller: ^0.2.0
+  
   azlistview: 
     git: 
       url: https://github.com/ramkshukla/azlistview.git
@@ -31,6 +32,7 @@ dependencies:
   firebase_auth: ^4.19.2
   cloud_firestore: ^4.17.0
   firebase_storage: ^11.7.2
+  
 
 dev_dependencies:
   flutter_test:
