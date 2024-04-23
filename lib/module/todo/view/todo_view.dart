@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:stack_overflow/_util/extensions.dart';
-import 'package:stack_overflow/module/home/view/home.dart';
 import 'package:stack_overflow/module/home/view/home_view.dart';
 import 'package:stack_overflow/module/todo/model/todos_model.dart';
 import 'package:stack_overflow/module/todo/repo/database_services.dart';

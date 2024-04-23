@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:stack_overflow/_util/extensions.dart';
-import 'package:stack_overflow/module/video_player/view/value_notifier.dart';
 import 'package:stack_overflow/module/video_player/view/video_player_child.dart';
 
 class CustomVideoPlayer extends StatefulWidget {
