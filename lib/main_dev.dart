@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stack_overflow/_util/app_config.dart';
 import 'package:stack_overflow/_util/app_constant.dart';
 import 'package:stack_overflow/_util/env_config.dart';
-import 'package:stack_overflow/module/brewary/view/home_view.dart';
+import 'package:stack_overflow/module/home/view/home_view.dart';
 
 void main() {
   EnvConfig devConfig = development;
@@ -24,7 +24,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHome(),
+      // home: const MyHome()
+      home: Home(),
     );
   }
 }
